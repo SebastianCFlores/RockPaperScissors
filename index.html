@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,12 +9,61 @@
 </head>
 <body>
     <script>
+        const choose = ["rock", "paper", "scissors"]
+        let input;
         function computerPlay() {
-            const choose = ["Rock", "Paper", "Scissors"]
-            return choose[Math.floor(Math.random()*choose.length)]
+            return choose[Math.floor(Math.random() * choose.length)]
         }
         function playerSelection() {
-            
+            const opcion = prompt("Escoja una wea: 1.- Rock 2.- Paper 3.- Scissors")
+            switch (opcion) {
+                case "1":
+                    input = "rock"
+                    break
+                case "2":
+                    input = "paper"
+                    break
+                case "3":
+                    input = "scissors"
+                    break
+                default:
+                    console.log("Elige una opcion valida")
+            }
+        }
+        let pcScore = 0
+        let userScore = 0
+        function playRound() {
+            playerSelection();
+            const computerSelection = computerPlay();
+            if (computerSelection === input) {
+                console.log("Empate")
+            } else if (computerSelection === "paper" && input === "rock") {
+                console.log("La pcerda gana")
+                pcScore++;
+            } else if (computerSelection === "rock" && input === "scissors") {
+                console.log("La pcerda gana")
+                pcScore++;
+            } else if (computerSelection === "scissors" && input === "paper") {
+                console.log("La pcerda gana")
+                pcScore++;
+            } else {
+                console.log("Tú ganas")
+                userScore++;
+            }
+            console.log(computerSelection)
+        }
+        function game() {
+            do {
+                playRound()
+            }
+            while (pcScore < 5 && userScore < 5)
+            if (pcScore = 5) {
+                console.log("Ganó la pcerda")
+            } else {
+                console.log("Ganaste tú mi king")
+            }
+            pcScore = 0 
+            userScore = 0
         }
     </script>
 </body>
